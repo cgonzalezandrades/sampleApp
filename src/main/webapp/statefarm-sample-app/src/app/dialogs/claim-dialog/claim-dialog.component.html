@@ -15,7 +15,7 @@
   </div>
   <div class="dialog-subject">
     <mat-form-field class="full-width">
-      <input matInput placeholder="Subject" [disabled]="data.action === 'update'" [(ngModel)]="claim.subject" [value]="claim.subject">
+      <input matInput placeholder="Subject" [(ngModel)]="claim.subject" [value]="claim.subject">
     </mat-form-field>
   </div>
   <div class="dialog-description" *ngIf="data.action === 'new'">
@@ -34,23 +34,26 @@
     <mat-toolbar>Claim Notes</mat-toolbar>
     <mat-card class="card">
       <mat-list>
-        <div *ngFor="let message of claim.messages">
-          <mat-list-item>{{message}}</mat-list-item>
+        <span *ngFor="let message of claim.messages">
           <mat-divider></mat-divider>
-        </div>
+          <mat-list-item>{{message}}</mat-list-item>
+        </span>
       </mat-list>
     </mat-card>
   </div>
   <div class="dialog-buttons">
     <button mat-raised-button class="buttons-spacing" [mat-dialog-close]="data.action">Close</button>
-    <button mat-raised-button class="buttons-spacing" [mat-dialog-close]="data.action" (click)="dialogAction(data.action)" color="warn">{{data.buttonText}}</button>
+    <button mat-raised-button class="buttons-spacing" [mat-dialog-close]="data.action" color="warn">{{data.buttonText}}</button>
   </div>
-  <div class="dialog-description" *ngIf="data.action === 'update'">
-    <mat-form-field class="full-width">
-      <textarea [(ngModel)]="newMessage" matInput matTextareaAutosize matAutosizeMinRows=5 matAutosizeMaxRows=5 placeholder="Add new note"></textarea>
-    </mat-form-field>
-  </div>
-  <div class="dialog-buttons" *ngIf="data.action === 'update'">
-    <button mat-raised-button class="buttons-spacing" (click)="postMessage()" color="warn">Create Note</button>
-  </div>
+  <span *ngIf="data.action === 'update'">
+    <div class="dialog-description" >
+        <mat-form-field class="full-width">
+          <textarea [(ngModel)]="newMessage" matInput matTextareaAutosize matAutosizeMinRows=5 matAutosizeMaxRows=5 placeholder="Add new note"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="dialog-buttons" >
+        <button mat-raised-button class="buttons-spacing" [disabled]="newMessage === ''" (click)="postMessage()" color="warn">Create Note</button>
+      </div>
+  </span>
+
 </div>

@@ -5,7 +5,7 @@
   <div class="login-card">
     <mat-card class="card">
       <div class="login-title  mat-h1">
-        Welcome to Sample Ticket App
+        Welcome to Sample Claim App
       </div>
       <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
         <mat-form-field fxFlex>
@@ -18,14 +18,19 @@
           <mat-error *ngIf="loginForm.hasError('required')" i18n>
             Please enter your new password
           </mat-error>
-          <mat-error *ngIf="!loginForm.controls.password.valid" i18n> Password should be minimum 8 characters and must contain a special character and a capital letter
+          <mat-error *ngIf="!loginForm.controls.password.valid" i18n> Pleae enter password
           </mat-error>
         </mat-form-field>
         <div class="login-button">
           <button mat-raised-button color="warn" type="submit">Login</button>
-          <button mat-raised-button>Create Account</button>
         </div>
       </form>
+      <div class="create-account-btn">
+        <button mat-raised-button (click)="signup()">Create Account</button>
+      </div>
+      <div class="error">
+        {{error}}
+      </div>
 
     </mat-card>
   </div>

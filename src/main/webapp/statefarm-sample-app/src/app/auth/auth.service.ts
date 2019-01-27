@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
@@ -10,15 +11,19 @@ export class AuthService {
         return this.loggedIn.asObservable();
     }
 
-    constructor(private router: Router) {}
-
-    login() {
-        this.loggedIn.next(true);
-        this.router.navigate(['/tickets']);
-    }
+    constructor(private router: Router, private http: HttpClient) {}
 
     logout() {
         this.loggedIn.next(false);
         this.router.navigate(['/login']);
+    }
+
+    logged() {
+        this.loggedIn.next(true);
+        this.router.navigate(['/tickets']);
+    }
+
+    login(body) {
+        return this.http.post(`http://localhost:8080/users/login`, body);
     }
 }

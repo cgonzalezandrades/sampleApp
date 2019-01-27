@@ -11,19 +11,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ClaimMasterComponent } from './claim/master/master.component';
-import { TicketDetailComponent } from './claim/detail/detail.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TableDataComponent } from './table-data/table-data.component';
 import { ClaimDialogComponent } from './dialogs/claim-dialog/claim-dialog.component';
+import { SignupComponent } from './signup/signup.component';
 @NgModule({
     declarations: [
         AppComponent,
         LoginComponent,
         ClaimMasterComponent,
-        TicketDetailComponent,
         ToolbarComponent,
         TableDataComponent,
-        ClaimDialogComponent
+        ClaimDialogComponent,
+        SignupComponent
     ],
     imports: [
         HttpClientModule,

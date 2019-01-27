@@ -41,7 +41,7 @@ export class ClaimMasterComponent implements OnInit {
     }
 
     public getClaims() {
-        this.claimsService.getTickets().subscribe(
+        this.claimsService.getClaims().subscribe(
             (response: any) => {
                 console.log(response);
                 //           this.tableDataService.columnsHeaders = ['Id', 'Subject', 'Status'];
@@ -81,6 +81,7 @@ export class ClaimMasterComponent implements OnInit {
                 claim: this.claim
             }
         });
+        this.dialogEvent(dialogRef);
     }
 
     private newTicket() {
@@ -100,6 +101,33 @@ export class ClaimMasterComponent implements OnInit {
                 action: 'new',
                 buttonText: 'Submit Claim',
                 claim: this.claim
+            }
+        });
+
+        this.dialogEvent(dialogRef);
+    }
+
+    private dialogEvent(dialogRef) {
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(result);
+            if (result === 'new') {
+                this.claimsService.saveNewClaim(this.claim).subscribe(
+                    (response: any) => {
+                        this.getClaims();
+                    },
+                    (error: any) => {
+                        console.log(error);
+                    }
+                );
+            } else if (result === 'update') {
+                this.claimsService.updateClaim(this.claim.id, this.claim).subscribe(
+                    (response: any) => {
+                        this.getClaims();
+                    },
+                    (error: any) => {
+                        console.log(error);
+                    }
+                );
             }
         });
     }

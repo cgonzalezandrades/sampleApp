@@ -1,0 +1,39 @@
+<div class="signup">
+  <div class="signup-logo">
+    <img src="../assets/logo.gif" width="200px" height="100px">
+  </div>
+  <div class="signup-card">
+    <mat-card class="card">
+      <div class="signup-title  mat-h1">
+        Create Account
+      </div>
+      <form class="signup-form" [formGroup]="signupForm" (ngSubmit)="createAccount()">
+        <mat-form-field>
+          <input type="text" matInput formControlName="firstName" placeholder="First Name">
+          <mat-error *ngIf="signupForm.controls.firstName.invalid">Please enter First Name</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput formControlName="lastName" placeholder="Last Name">
+          <mat-error *ngIf="signupForm.controls.lastName.invalid">Please enter Last Name</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput formControlName="username" placeholder="Username">
+          <mat-error *ngIf="signupForm.controls.username.invalid">Please enter username</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Password" formControlName="password" [type]="hidePassword ? 'password' : 'text'">
+          <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="signupForm.hasError('required')" i18n>
+            Please enter your new password
+          </mat-error>
+          <mat-error *ngIf="!signupForm.controls.password.valid" i18n> Password should be minimum 8 characters and must contain a special character and a capital letter
+          </mat-error>
+        </mat-form-field>
+        <div class="signup-button">
+          <button mat-raised-button color="warn" type="submit">Submit</button>
+        </div>
+      </form>
+
+    </mat-card>
+  </div>
+</div>

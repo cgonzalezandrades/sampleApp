@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 export class ClaimsService {
     constructor(private http: HttpClient) {}
 
-    public getTickets() {
+    public getClaims() {
         return this.http.get(`http://localhost:8080/tickets`);
     }
 

@@ -12,26 +12,28 @@ public class User {
 
 	// primary key
 	@Id
-	private String id;
+	private int id;
 	private String firstName;
 	private String lastName;
+	private String username;
 	private String password;
 	
 	
 	public User() {
 		super();
 	}
-	public User(String id, String firstName, String lastName, String password) {
+	public User(int id, String firstName, String lastName, String password , String username) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
+		this.username = username;
 	}
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getFirstName() {
@@ -52,6 +54,14 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	
 	
 	
 	

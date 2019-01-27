@@ -1,7 +1,6 @@
 package com.sample.webapp.tickets;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,9 +54,9 @@ public class TicketService {
 		ticketsRepository.save(ticket);
 	}
 
-	public void deleteTicket(String ticketId) {
-//		tickets.removeIf(ticket -> ticket.getId().equals(ticketId));
-		
-		ticketsRepository.deleteById(ticketId);
-	}
+//	public void deleteTicket(String ticketId) {
+////		tickets.removeIf(ticket -> ticket.getId().equals(ticketId));
+//		
+//		ticketsRepository.deleteById(ticketId);
+//	}
 }

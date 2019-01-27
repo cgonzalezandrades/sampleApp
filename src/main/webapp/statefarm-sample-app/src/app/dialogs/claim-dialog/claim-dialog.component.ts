@@ -28,48 +28,11 @@ export class ClaimDialogComponent implements AfterContentChecked {
         this.dialogRef.close('cancel');
     }
 
-    public dialogAction(action) {
-        if (action === 'new') {
-            console.log('new');
-            this.claimsService.saveNewClaim(this.claim).subscribe(
-                (response: any) => {
-                    this.claimsService.getTickets().subscribe(
-                        (response: any) => {
-                            console.log(response);
-                            // this.tableDataService.setTableDataSource(response);
-                        },
-                        (error: any) => {
-                            console.log(error);
-                        }
-                    );
-                },
-                (error: any) => {
-                    console.log(error);
-                }
-            );
-        } else {
-            this.updateClaim();
-        }
-    }
-
     public postMessage() {
         this.claim.messages.push(this.newMessage);
-        this.updateClaim();
-    }
-
-    private updateClaim() {
         this.claimsService.updateClaim(this.claim.id, this.claim).subscribe(
             (response: any) => {
-                this.claimsService.getTickets().subscribe(
-                    (response: any) => {
-                        console.log(response);
-                        this.newMessage = '';
-                        // this.tableDataService.setTableDataSource(response);
-                    },
-                    (error: any) => {
-                        console.log(error);
-                    }
-                );
+                this.newMessage = '';
             },
             (error: any) => {
                 console.log(error);

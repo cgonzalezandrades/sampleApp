@@ -26,7 +26,7 @@ export class TableDataComponent implements OnInit {
     @Output() public rowClickedEvent = new EventEmitter<any>();
     ngOnInit() {
         this.tableDataService.sort = this.sort;
-        this.claimsService.getTickets().subscribe(
+        this.claimsService.getClaims().subscribe(
             (response: any) => {
                 console.log(response);
                 this.dataSource = new MatTableDataSource(response);
@@ -51,5 +51,4 @@ export class TableDataComponent implements OnInit {
     public rowClicked(row): void {
         this.rowClickedEvent.emit(row);
     }
-
 }
