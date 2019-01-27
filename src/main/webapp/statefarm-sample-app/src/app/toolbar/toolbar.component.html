@@ -1,0 +1,13 @@
+<mat-toolbar *ngIf="isLoggedIn$ | async as isLoggedIn" class="toolbar">
+
+    <div class="toolbar-title">
+        Sample Tickets App
+    </div>
+    <div class="toolbar-logout">
+        <button mat-flat-button>Logout out</button>
+    </div>
+
+</mat-toolbar>
+<div class="main">
+    <router-outlet></router-outlet>
+</div>

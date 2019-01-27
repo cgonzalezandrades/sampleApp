@@ -1,0 +1,17 @@
+.toolbar {
+    display: flex;
+    justify-content: row;
+}
+
+.toolbar-title {
+    display: flex;
+    flex: 1;
+}
+.toolbar-logout {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+.main {
+    margin: 2%;
+}

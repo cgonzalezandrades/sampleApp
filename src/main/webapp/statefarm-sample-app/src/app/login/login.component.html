@@ -1,0 +1,32 @@
+<div class="login">
+  <div class="login-logo">
+    <img src="../assets/logo.gif" width="200px" height="100px">
+  </div>
+  <div class="login-card">
+    <mat-card class="card">
+      <div class="login-title  mat-h1">
+        Welcome to Sample Ticket App
+      </div>
+      <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field fxFlex>
+          <input type="text" matInput formControlName="username" placeholder="Username">
+          <mat-error *ngIf="loginForm.controls.username.invalid">Please enter username</mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <input matInput placeholder="Password" formControlName="password" [type]="hidePassword ? 'password' : 'text'">
+          <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="loginForm.hasError('required')" i18n>
+            Please enter your new password
+          </mat-error>
+          <mat-error *ngIf="!loginForm.controls.password.valid" i18n> Password should be minimum 8 characters and must contain a special character and a capital letter
+          </mat-error>
+        </mat-form-field>
+        <div class="login-button">
+          <button mat-raised-button color="warn" type="submit">Login</button>
+          <button mat-raised-button>Create Account</button>
+        </div>
+      </form>
+
+    </mat-card>
+  </div>
+</div>

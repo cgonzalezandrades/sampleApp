@@ -1,0 +1,10 @@
+.tickets-header {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1%;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+}
