@@ -15,17 +15,42 @@
   </div>
   <div class="dialog-subject">
     <mat-form-field class="full-width">
-      <input matInput placeholder="Subject" [(ngModel)]="claim.subject" [value]="claim.subject">
+      <input matInput placeholder="Subject" [disabled]="data.action === 'update'" [(ngModel)]="claim.subject" [value]="claim.subject">
     </mat-form-field>
   </div>
-  <div class="dialog-description">
+  <div class="dialog-description" *ngIf="data.action === 'new'">
     <mat-form-field class="full-width">
       <textarea [(ngModel)]="claim.description" [value]="claim.description" matInput matTextareaAutosize matAutosizeMinRows=7 matAutosizeMaxRows=7
         placeholder="Please give a explanation of claim"></textarea>
     </mat-form-field>
   </div>
+  <div class="dialog-description" *ngIf="data.action === 'update'">
+    <mat-form-field class="full-width">
+      <textarea [disabled]="true" [(ngModel)]="claim.description" [value]="claim.description" matInput matTextareaAutosize matAutosizeMinRows=7
+        matAutosizeMaxRows=7 placeholder="Claim Overview"></textarea>
+    </mat-form-field>
+  </div>
+  <div *ngIf="data.action === 'update'">
+    <mat-toolbar>Claim Notes</mat-toolbar>
+    <mat-card class="card">
+      <mat-list>
+        <div *ngFor="let message of claim.messages">
+          <mat-list-item>{{message}}</mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-list>
+    </mat-card>
+  </div>
   <div class="dialog-buttons">
     <button mat-raised-button class="buttons-spacing" [mat-dialog-close]="data.action">Cancel</button>
     <button mat-raised-button class="buttons-spacing" [mat-dialog-close]="data.action" (click)="dialogAction(data.action)" color="warn">{{data.buttonText}}</button>
+  </div>
+  <div class="dialog-description" *ngIf="data.action === 'update'">
+    <mat-form-field class="full-width">
+      <textarea [(ngModel)]="newMessage" matInput matTextareaAutosize matAutosizeMinRows=5 matAutosizeMaxRows=5 placeholder="Add new note"></textarea>
+    </mat-form-field>
+  </div>
+  <div class="dialog-buttons" *ngIf="data.action === 'update'">
+    <button mat-raised-button class="buttons-spacing" (click)="postMessage()" color="warn">Create Note</button>
   </div>
 </div>

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClaimsService } from '../claims.service';
 import { TableDataService } from '../../table-data/table-data.service';
 import { MatDialog } from '@angular/material';
 import { ClaimDialogComponent } from '../../dialogs/claim-dialog/claim-dialog.component';
+import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
 
 @Component({
     selector: 'app-master',
@@ -18,6 +19,16 @@ export class ClaimMasterComponent implements OnInit {
         status: null,
         messages: []
     };
+    dataSource = new MatTableDataSource();
+    @ViewChild(MatSort) sort: MatSort;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+
+    columnsHeaders = ['id', 'subject', 'status'];
+    // columnsHeadersObj = [
+    //         { DISPLAY: 'Id', NAME: 'id' },
+    //         { DISPLAY: 'Subject', NAME: 'subject' },
+    //         { DISPLAY: 'Status', NAME: 'status' }
+    //     ];
     constructor(
         private router: Router,
         private claimsService: ClaimsService,
@@ -26,12 +37,6 @@ export class ClaimMasterComponent implements OnInit {
     ) {}
 
     public ngOnInit() {
-        this.tableDataService.columnsHeaders = ['Id', 'Subject', 'Status'];
-        this.tableDataService.columnsHeadersObj = [
-            { DISPLAY: 'Id', NAME: 'id' },
-            { DISPLAY: 'Subject', NAME: 'subject' },
-            { DISPLAY: 'Status', NAME: 'status' }
-        ];
         this.getClaims();
     }
 
@@ -39,7 +44,17 @@ export class ClaimMasterComponent implements OnInit {
         this.claimsService.getTickets().subscribe(
             (response: any) => {
                 console.log(response);
-                this.tableDataService.setTableDataSource(response);
+                //           this.tableDataService.columnsHeaders = ['Id', 'Subject', 'Status'];
+                // this.tableDataService.columnsHeadersObj = [
+                //     { DISPLAY: 'Id', NAME: 'id' },
+                //     { DISPLAY: 'Subject', NAME: 'subject' },
+                //     { DISPLAY: 'Status', NAME: 'status' }
+                // ];
+
+                this.dataSource = new MatTableDataSource(response);
+                this.dataSource.sort = this.sort;
+                this.dataSource.paginator = this.paginator;
+                // this.tableDataService.setTableDataSource(response);
             },
             (error: any) => {
                 console.log(error);
@@ -56,13 +71,13 @@ export class ClaimMasterComponent implements OnInit {
         this.claim.messages = rowData.messages;
 
         const dialogRef = this.dialog.open(ClaimDialogComponent, {
-            width: '600px',
-            height: '400px',
+            width: '900px',
+            height: '800px',
             data: {
                 name: 'Update Claim',
                 closeDialog: 'Cancel',
                 action: 'update',
-                buttonText: 'Submit Claim',
+                buttonText: 'Update Claim',
                 claim: this.claim
             }
         });
@@ -87,5 +102,14 @@ export class ClaimMasterComponent implements OnInit {
                 claim: this.claim
             }
         });
+    }
+
+    // highlight row when hovered with mouse
+    public rowHovered(element, action) {
+        if (action === 'enter') {
+            element.parentElement.style.background = '#f4f4f4';
+        } else {
+            element.parentElement.style.background = 'white';
+        }
     }
 }

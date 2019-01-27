@@ -19,6 +19,7 @@
 .dialog-buttons {
     display: flex;
     justify-content: flex-end;
+    margin-top: 2%;
 }
 
 .full-width {
@@ -27,4 +28,9 @@
 
 .buttons-spacing {
     margin: 2px;
+}
+
+.card {
+    overflow: auto;
+    max-height: 115px;
 }

@@ -10,7 +10,7 @@ import { TableDataService } from '../../table-data/table-data.service';
 })
 export class ClaimDialogComponent implements AfterContentChecked {
     claim: any;
-
+    public newMessage: String;
     statuses = ['New', 'Open', 'Pending', 'Resolved'];
 
     constructor(
@@ -36,7 +36,7 @@ export class ClaimDialogComponent implements AfterContentChecked {
                     this.claimsService.getTickets().subscribe(
                         (response: any) => {
                             console.log(response);
-                            this.tableDataService.setTableDataSource(response);
+                            // this.tableDataService.setTableDataSource(response);
                         },
                         (error: any) => {
                             console.log(error);
@@ -48,22 +48,32 @@ export class ClaimDialogComponent implements AfterContentChecked {
                 }
             );
         } else {
-            this.claimsService.updateClaim(this.claim.id, this.claim).subscribe(
-                (response: any) => {
-                    this.claimsService.getTickets().subscribe(
-                        (response: any) => {
-                            console.log(response);
-                            this.tableDataService.setTableDataSource(response);
-                        },
-                        (error: any) => {
-                            console.log(error);
-                        }
-                    );
-                },
-                (error: any) => {
-                    console.log(error);
-                }
-            );
+            this.updateClaim();
         }
+    }
+
+    public postMessage() {
+        this.claim.messages.push(this.newMessage);
+        this.updateClaim();
+    }
+
+    private updateClaim() {
+        this.claimsService.updateClaim(this.claim.id, this.claim).subscribe(
+            (response: any) => {
+                this.claimsService.getTickets().subscribe(
+                    (response: any) => {
+                        console.log(response);
+                        this.newMessage = '';
+                        // this.tableDataService.setTableDataSource(response);
+                    },
+                    (error: any) => {
+                        console.log(error);
+                    }
+                );
+            },
+            (error: any) => {
+                console.log(error);
+            }
+        );
     }
 }
