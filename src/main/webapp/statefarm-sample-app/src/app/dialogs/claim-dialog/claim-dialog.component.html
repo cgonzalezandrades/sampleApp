@@ -1,0 +1,31 @@
+<div class="dialog">
+  <div class="dialog-header">
+    <div class="dialog-title mat-h1">
+      {{data.name}}
+    </div>
+    <div class="dialog-status">
+      <mat-form-field>
+        <mat-select placeholder="Claim status" [(ngModel)]="claim.status" [disabled]="data.action === 'new'">
+          <mat-option *ngFor="let status of statuses" [value]="status">
+            {{status}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="dialog-subject">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Subject" [(ngModel)]="claim.subject" [value]="claim.subject">
+    </mat-form-field>
+  </div>
+  <div class="dialog-description">
+    <mat-form-field class="full-width">
+      <textarea [(ngModel)]="claim.description" [value]="claim.description" matInput matTextareaAutosize matAutosizeMinRows=7 matAutosizeMaxRows=7
+        placeholder="Please give a explanation of claim"></textarea>
+    </mat-form-field>
+  </div>
+  <div class="dialog-buttons">
+    <button mat-raised-button class="buttons-spacing" [mat-dialog-close]="data.action">Cancel</button>
+    <button mat-raised-button class="buttons-spacing" [mat-dialog-close]="data.action" (click)="dialogAction(data.action)" color="warn">{{data.buttonText}}</button>
+  </div>
+</div>

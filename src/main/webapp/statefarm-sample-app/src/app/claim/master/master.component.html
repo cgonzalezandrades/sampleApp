@@ -1,5 +1,5 @@
 <div class="tickets-header">
-    <button mat-raised-button color="warn" (click)="newTicket()">New Ticket</button>
+    <button mat-raised-button (click)="newTicket()">New Claim</button>
 </div>
 <div class="table">
     <app-table-data [templateRef]="columnTemplateRef" (rowClickedEvent)="rowClicked($event)">

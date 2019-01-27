@@ -1,0 +1,30 @@
+.dialog {
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: center;
+}
+
+.dialog-title {
+    display: flex;
+    flex: 1;
+}
+
+.dialog-status {
+}
+
+.dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.buttons-spacing {
+    margin: 2px;
+}

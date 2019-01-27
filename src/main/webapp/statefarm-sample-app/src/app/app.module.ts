@@ -10,15 +10,32 @@ import { MaterialModule } from './material-modules/material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { TicketMasterComponent } from './ticket/master/master.component';
-import { TicketDetailComponent } from './ticket/detail/detail.component';
+import { ClaimMasterComponent } from './claim/master/master.component';
+import { TicketDetailComponent } from './claim/detail/detail.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TableDataComponent } from './table-data/table-data.component';
-
+import { ClaimDialogComponent } from './dialogs/claim-dialog/claim-dialog.component';
 @NgModule({
-    declarations: [AppComponent, LoginComponent, TicketMasterComponent, TicketDetailComponent, ToolbarComponent, TableDataComponent],
-    imports: [HttpClientModule, MaterialModule, BrowserAnimationsModule, BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        ClaimMasterComponent,
+        TicketDetailComponent,
+        ToolbarComponent,
+        TableDataComponent,
+        ClaimDialogComponent
+    ],
+    imports: [
+        HttpClientModule,
+        MaterialModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
     providers: [AuthGuard, AuthService],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [ClaimDialogComponent]
 })
 export class AppModule {}

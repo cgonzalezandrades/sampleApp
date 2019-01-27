@@ -15,19 +15,19 @@ public class TicketService {
 	private TicketRepository ticketsRepository;
 	
 	
-	private List<Ticket> tickets = new ArrayList<>(Arrays.asList(
-			new Ticket("1", "subject1", "description1",  new String[]{"ID", "NAME"}, "NEW"  ),
-			new Ticket("2", "subject2", "description2",  new String[]{"ID", "NAME"}, "CLOSED"  ),
-			new Ticket("3", "subject3", "description3",  new String[]{"ID", "NAME"}, "OPEN" )
-			));
+//	private List<Ticket> tickets = new ArrayList<>(Arrays.asList(
+//			new Ticket(1, "subject1", "description1",  new String[]{"ID", "NAME"}, "NEW"  ),
+//			new Ticket(2, "subject2", "description2",  new String[]{"ID", "NAME"}, "CLOSED"  ),
+//			new Ticket(3, "subject3", "description3",  new String[]{"ID", "NAME"}, "OPEN" )
+//			));
 	
 	public List<Ticket> getAllTickets(){
-		return tickets;
-		
-//		List<Ticket> tickets = new ArrayList<>();
-//		// iterate thoguth each ticket, and add each to the tickets List
-//		ticketsRepository.findAll().forEach(tickets :: add);
 //		return tickets;
+		
+		List<Ticket> tickets = new ArrayList<>();
+		// iterate thoguth each ticket, and add each to the tickets List
+		ticketsRepository.findAll().forEach(tickets :: add);
+		return tickets;
 	}
 	
 	public Optional<Ticket> getTicket(String ticketId) {
@@ -38,7 +38,7 @@ public class TicketService {
 	
 	public void addTicket(Ticket ticket) {
 //		tickets.add(ticket);
-		
+		ticket.setId((int)ticketsRepository.count() + 1);
 		ticketsRepository.save(ticket);
 	}
 

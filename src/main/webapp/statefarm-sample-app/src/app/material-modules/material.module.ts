@@ -7,27 +7,36 @@ import {
     MatIconModule,
     MatInputModule,
     MatTableModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatSortModule
 } from '@angular/material';
 
 @NgModule({
     imports: [
+        MatDialogModule,
         MatInputModule,
         MatPaginatorModule,
         MatCardModule,
         MatButtonModule,
         MatToolbarModule,
         MatIconModule,
-        MatTableModule
+        MatTableModule,
+        MatSelectModule,
+        MatSortModule
     ],
     exports: [
+        MatSelectModule,
+        MatDialogModule,
         MatInputModule,
         MatCardModule,
         MatButtonModule,
         MatToolbarModule,
         MatIconModule,
         MatTableModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatSortModule
     ]
 })
 export class MaterialModule {}

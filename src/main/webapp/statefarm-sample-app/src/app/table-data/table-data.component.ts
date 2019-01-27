@@ -7,8 +7,8 @@ import {
     EventEmitter,
     Output
 } from '@angular/core';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { TicketsService } from '../ticket/tickets.service';
+import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
+import { ClaimsService } from '../claim/claims.service';
 import { TableDataService } from './table-data.service';
 
 @Component({
@@ -19,16 +19,14 @@ import { TableDataService } from './table-data.service';
 export class TableDataComponent implements OnInit {
     dataSource = new MatTableDataSource();
 
-    constructor(
-        private ticketsService: TicketsService,
-        public tableDataService: TableDataService
-    ) {}
-
+    constructor(private claimsService: ClaimsService, public tableDataService: TableDataService) {}
+    @ViewChild(MatSort) private sort: MatSort;
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @Input() public templateRef: TemplateRef<any>;
     @Output() public rowClickedEvent = new EventEmitter<any>();
     ngOnInit() {
-        this.ticketsService.getTickets().subscribe(
+        this.tableDataService.sort = this.sort;
+        this.claimsService.getTickets().subscribe(
             (response: any) => {
                 console.log(response);
                 this.dataSource = new MatTableDataSource(response);
@@ -49,7 +47,9 @@ export class TableDataComponent implements OnInit {
         }
     }
 
+    // get click evetn from component and emit to parent component
     public rowClicked(row): void {
         this.rowClickedEvent.emit(row);
     }
+
 }

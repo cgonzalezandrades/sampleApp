@@ -10,7 +10,7 @@ public class Ticket {
 
 	// primary key
 	@Id
-	private String id;
+	private int id;
 	private String subject;
 	private String description;
 	private String[] messages;
@@ -25,7 +25,7 @@ public class Ticket {
 	
 	
 	
-	public Ticket(String id, String subject, String description, String[] messages, String status) {
+	public Ticket(int id, String subject, String description, String[] messages, String status) {
 		super();
 		this.id = id;
 		this.subject = subject;
@@ -37,11 +37,11 @@ public class Ticket {
 
 
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 	
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	

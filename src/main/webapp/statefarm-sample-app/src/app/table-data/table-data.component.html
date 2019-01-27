@@ -1,5 +1,5 @@
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="tableDataService.tableDataSource">
+  <table mat-table [dataSource]="tableDataService.tableDataSource" matSort class="mat-elevation-z8" >
 
     <ng-container matColumnDef="{{col.DISPLAY}}" *ngFor="let col of tableDataService.columnsHeadersObj ">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> {{col.DISPLAY}} </th>

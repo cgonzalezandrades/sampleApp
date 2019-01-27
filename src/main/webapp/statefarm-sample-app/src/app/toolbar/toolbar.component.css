@@ -1,9 +1,11 @@
 .toolbar {
     display: flex;
     justify-content: row;
+    background-color: #e74f55;
 }
 
 .toolbar-title {
+    color: white;
     display: flex;
     flex: 1;
 }

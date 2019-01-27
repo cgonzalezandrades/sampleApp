@@ -29,17 +29,20 @@ export class MyDataSource extends DataSource<any[]> {
     providedIn: 'root'
 })
 export class TableDataService {
+    public sort: any;
+    public sortBy: string;
+    public sortOrder: string;
     private dataSubject = new BehaviorSubject<any[]>([]);
     public columnsHeaders: string[] = [];
     public columnsHeadersObj: { DISPLAY: string; NAME: string }[] = [];
     public tableDataSource: MyDataSource;
     public paginator: any;
-    public sort: any;
     constructor() {}
 
     public setTableDataSource(tableData): void {
+        console.log('set datas');
         this.dataSubject.next(tableData);
         this.tableDataSource = new MyDataSource(this.dataSubject, this.paginator, this.sort);
-        // this.tableDataSource.sort = this.sort;
+        this.tableDataSource.sort = this.sort;
     }
-}
+}   
