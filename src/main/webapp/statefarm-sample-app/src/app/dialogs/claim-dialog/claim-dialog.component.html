@@ -42,7 +42,7 @@
     </mat-card>
   </div>
   <div class="dialog-buttons">
-    <button mat-raised-button class="buttons-spacing" [mat-dialog-close]="data.action">Cancel</button>
+    <button mat-raised-button class="buttons-spacing" [mat-dialog-close]="data.action">Close</button>
     <button mat-raised-button class="buttons-spacing" [mat-dialog-close]="data.action" (click)="dialogAction(data.action)" color="warn">{{data.buttonText}}</button>
   </div>
   <div class="dialog-description" *ngIf="data.action === 'update'">
