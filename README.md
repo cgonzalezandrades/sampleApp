@@ -25,10 +25,10 @@ This app created for the sole purpose of demostrating require knowledge for excu
 - `NodeJs`
 
 # Installation
-**for tesing this app you will need to create a account to be able to login**  
+**For tesing this app you will need to create a account to be able to login**  
 Dont worry ! you are not subscribing or putting you personal information anywhere.  
 
-- **before permorforming these steps:**
+- **Before permorforming these steps:**
 - make sure you have Java SDK 8
 - Port 8080 is not in use.
 - Port 4200 is not in use.
