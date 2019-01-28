@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { ClaimsService } from '../claims.service';
-import { TableDataService } from '../../table-data/table-data.service';
 import { MatDialog } from '@angular/material';
 import { ClaimDialogComponent } from '../../dialogs/claim-dialog/claim-dialog.component';
 import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
@@ -12,27 +11,20 @@ import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
     styleUrls: ['./master.component.css']
 })
 export class ClaimMasterComponent implements OnInit {
-    claim = {
+    private claim = {
         id: null,
         subject: '',
         description: '',
         status: null,
         messages: []
     };
-    dataSource = new MatTableDataSource();
-    @ViewChild(MatSort) sort: MatSort;
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-
-    columnsHeaders = ['id', 'subject', 'status'];
-    // columnsHeadersObj = [
-    //         { DISPLAY: 'Id', NAME: 'id' },
-    //         { DISPLAY: 'Subject', NAME: 'subject' },
-    //         { DISPLAY: 'Status', NAME: 'status' }
-    //     ];
+    private dataSource = new MatTableDataSource();
+    @ViewChild(MatSort) private sort: MatSort;
+    @ViewChild(MatPaginator) private paginator: MatPaginator;
+    private columnsHeaders = ['id', 'subject', 'status'];
     constructor(
         private router: Router,
         private claimsService: ClaimsService,
-        private tableDataService: TableDataService,
         private dialog: MatDialog
     ) {}
 
@@ -43,18 +35,9 @@ export class ClaimMasterComponent implements OnInit {
     public getClaims() {
         this.claimsService.getClaims().subscribe(
             (response: any) => {
-                console.log(response);
-                //           this.tableDataService.columnsHeaders = ['Id', 'Subject', 'Status'];
-                // this.tableDataService.columnsHeadersObj = [
-                //     { DISPLAY: 'Id', NAME: 'id' },
-                //     { DISPLAY: 'Subject', NAME: 'subject' },
-                //     { DISPLAY: 'Status', NAME: 'status' }
-                // ];
-
                 this.dataSource = new MatTableDataSource(response);
                 this.dataSource.sort = this.sort;
                 this.dataSource.paginator = this.paginator;
-                // this.tableDataService.setTableDataSource(response);
             },
             (error: any) => {
                 console.log(error);
@@ -63,7 +46,6 @@ export class ClaimMasterComponent implements OnInit {
     }
 
     public rowClicked(rowData): void {
-        console.log(rowData);
         this.claim.id = rowData.id;
         this.claim.subject = rowData.subject;
         this.claim.description = rowData.description;
@@ -109,9 +91,8 @@ export class ClaimMasterComponent implements OnInit {
 
     private dialogEvent(dialogRef) {
         dialogRef.afterClosed().subscribe(result => {
-            console.log(result);
             if (result === 'new') {
-                this.claimsService.saveNewClaim(this.claim).subscribe(
+                this.claimsService.postClaim(this.claim).subscribe(
                     (response: any) => {
                         this.getClaims();
                     },
@@ -120,7 +101,7 @@ export class ClaimMasterComponent implements OnInit {
                     }
                 );
             } else if (result === 'update') {
-                this.claimsService.updateClaim(this.claim.id, this.claim).subscribe(
+                this.claimsService.putClaim(this.claim.id, this.claim).subscribe(
                     (response: any) => {
                         this.getClaims();
                     },

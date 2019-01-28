@@ -24,13 +24,13 @@
         placeholder="Please give a explanation of claim"></textarea>
     </mat-form-field>
   </div>
-  <div class="dialog-description" *ngIf="data.action === 'update'">
+  <span *ngIf="data.action === 'update'">
+ <div class="dialog-description" >
     <mat-form-field class="full-width">
       <textarea [disabled]="true" [(ngModel)]="claim.description" [value]="claim.description" matInput matTextareaAutosize matAutosizeMinRows=7
         matAutosizeMaxRows=7 placeholder="Claim Overview"></textarea>
     </mat-form-field>
   </div>
-  <div *ngIf="data.action === 'update'">
     <mat-toolbar>Claim Notes</mat-toolbar>
     <mat-card class="card">
       <mat-list>
@@ -38,9 +38,9 @@
           <mat-divider></mat-divider>
           <mat-list-item>{{message}}</mat-list-item>
         </span>
-      </mat-list>
-    </mat-card>
-  </div>
+  </mat-list>
+  </mat-card>
+  </span>
   <div class="dialog-buttons">
     <button mat-raised-button class="buttons-spacing" [mat-dialog-close]="data.action">Close</button>
     <button mat-raised-button class="buttons-spacing" [mat-dialog-close]="data.action" color="warn">{{data.buttonText}}</button>
@@ -55,5 +55,4 @@
         <button mat-raised-button class="buttons-spacing" [disabled]="newMessage === ''" (click)="postMessage()" color="warn">Create Note</button>
       </div>
   </span>
-
 </div>

@@ -13,9 +13,6 @@
     flex: 1;
 }
 
-.dialog-status {
-}
-
 .dialog-buttons {
     display: flex;
     justify-content: flex-end;

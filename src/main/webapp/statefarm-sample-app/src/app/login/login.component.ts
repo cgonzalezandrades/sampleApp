@@ -1,32 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ErrorStateMatcher } from '@angular/material/core';
-import {
-    FormControl,
-    Validators,
-    FormGroup,
-    FormBuilder,
-    FormGroupDirective,
-    NgForm
-} from '@angular/forms';
+import { Router } from '@angular/router';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
-
-// export class PasswordErrorMatcher implements ErrorStateMatcher {
-//     public isErrorState(
-//         control: FormControl | null,
-//         form: FormGroupDirective | NgForm | null
-//     ): boolean {
-//         const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
-//         const invalidParent = !!(
-//             control &&
-//             control.parent &&
-//             control.parent.invalid &&
-//             control.parent.dirty
-//         );
-
-//         return invalidCtrl || invalidParent;
-//     }
-// }
 
 @Component({
     selector: 'app-login',
@@ -52,7 +27,7 @@ export class LoginComponent implements OnInit {
     }
 
     public login() {
-        let body = this.loginForm.value;
+        const body = this.loginForm.value;
         body.id = null;
         body.firstName = null;
         body.lastName = null;

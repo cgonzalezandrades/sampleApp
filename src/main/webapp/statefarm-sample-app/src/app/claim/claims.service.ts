@@ -10,11 +10,11 @@ export class ClaimsService {
         return this.http.get(`http://localhost:8080/tickets`);
     }
 
-    public saveNewClaim(body) {
+    public postClaim(body) {
         return this.http.post(`http://localhost:8080/tickets`, body);
     }
 
-    public updateClaim(claimId, body) {
+    public putClaim(claimId, body) {
         return this.http.put(`http://localhost:8080/tickets/${claimId}`, body);
     }
 }
