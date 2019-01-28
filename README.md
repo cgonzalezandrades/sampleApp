@@ -1,5 +1,5 @@
 # Sample claim app
-This app created for the sole purpose of demostrating require knowledge for excuting succesful Software Developer to with knowledge in Front and Back end technologies.
+This app created for the sole purpose of demostrating require knowledge for excuting succesful Software Developer role with knowledge in Front and Back end technologies.
 
 
 # Skills Covered
@@ -9,7 +9,7 @@ This app created for the sole purpose of demostrating require knowledge for excu
 - Web Services and RESTful Api
 
 # Overview
- This app provides access from the agent point of view. The main focus is for agents to be able to create claims on behalf of the customer. An agent can review claims base on status like **New, Open, Resolved, Pending**
+ The main focus is for agents to be able to create claims on behalf of the customer. Agent can also review claims base on status like **New, Open, Resolved, Pending** and update these claims with notes to provide good customer service. 
 
 #### Back End Languages and framework
 - `Java`
@@ -40,8 +40,8 @@ This app created for the sole purpose of demostrating require knowledge for excu
  ###### 8. On your browser, go to `http://localhost:4200`
 
  ### NOTES
- For simplicity and time reasons this app lack of som funcitnality that would make this product more attractive. 
+ For simplicity and time reasons Im skipping some important topics like security and some basic functionality that would make this product more attractive and secure. 
  
- **Please note there are code implementation taht could be more efficient with more resources**
+
 
 
