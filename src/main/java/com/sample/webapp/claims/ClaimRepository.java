@@ -1,8 +1,8 @@
-package com.sample.webapp.tickets;
+package com.sample.webapp.claims;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface TicketRepository extends CrudRepository<Ticket, String >{
+public interface ClaimRepository extends CrudRepository<Claim, String >{
 
 	
 	// get all tickets

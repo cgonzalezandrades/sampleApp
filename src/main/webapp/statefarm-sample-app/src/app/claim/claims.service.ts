@@ -7,14 +7,14 @@ export class ClaimsService {
     constructor(private http: HttpClient) {}
 
     public getClaims() {
-        return this.http.get(`http://localhost:8080/tickets`);
+        return this.http.get(`http://localhost:8080/claims`);
     }
 
     public postClaim(body) {
-        return this.http.post(`http://localhost:8080/tickets`, body);
+        return this.http.post(`http://localhost:8080/claims`, body);
     }
 
     public putClaim(claimId, body) {
-        return this.http.put(`http://localhost:8080/tickets/${claimId}`, body);
+        return this.http.put(`http://localhost:8080/claims/${claimId}`, body);
     }
 }

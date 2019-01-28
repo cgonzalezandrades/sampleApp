@@ -1,4 +1,4 @@
-package com.sample.webapp.tickets;
+package com.sample.webapp.claims;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -6,7 +6,7 @@ import javax.persistence.Id;
 
 // tell JAP to create a table from this object and each property would be a column
 @Entity
-public class Ticket {
+public class Claim {
 
 	// primary key
 	@Id
@@ -17,15 +17,11 @@ public class Ticket {
 	private String status;
 	
 	
-	public Ticket() {
+	public Claim() {
 		super();
 	}
-
-
 	
-	
-	
-	public Ticket(int id, String subject, String description, String[] messages, String status) {
+	public Claim(int id, String subject, String description, String[] messages, String status) {
 		super();
 		this.id = id;
 		this.subject = subject;
@@ -33,9 +29,6 @@ public class Ticket {
 		this.messages = messages;
 		this.status = status;
 	}
-	
-
-
 
 	public int getId() {
 		return id;

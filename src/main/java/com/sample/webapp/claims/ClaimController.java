@@ -1,4 +1,4 @@
-package com.sample.webapp.tickets;
+package com.sample.webapp.claims;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,34 +12,34 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class TicketController {
+public class ClaimController {
 
 	@Autowired
-	private TicketService ticketService;
+	private ClaimService claimService;
 	
 	// GET by default
-	@RequestMapping("/tickets")
+	@RequestMapping("/claims")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public List<Ticket> getAllTickets() {
-		return ticketService.getAllTickets();
+	public List<Claim> getAllClaims() {
+		return claimService.getAllClaims();
 	}
 	
-	@RequestMapping("/tickets/{ticketId}")
+	@RequestMapping("/claims/{claimId}")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public Optional<Ticket> getTicket( @PathVariable String ticketId) {
-		return ticketService.getTicket(ticketId);
+	public Optional<Claim> getClaim( @PathVariable String claimId) {
+		return claimService.getClaim(claimId);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value="/tickets")
+	@RequestMapping(method = RequestMethod.POST, value="/claims")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public void createTicket(@RequestBody Ticket ticket) {
-		ticketService.addTicket(ticket);
+	public void createClaim(@RequestBody Claim ticket) {
+		claimService.addClaim(ticket);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, value="/tickets/{ticketId}")
+	@RequestMapping(method = RequestMethod.PUT, value="/claims/{claimId}")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public void updateticket(@PathVariable String ticketId, @RequestBody Ticket ticket) {
-		ticketService.updateTicket(ticketId,ticket);
+	public void updateClaim(@PathVariable String claimId, @RequestBody Claim claim) {
+		claimService.updateClaim(claimId,claim);
 	}
 	
 //	@RequestMapping(method = RequestMethod.DELETE, value = "/tickets/{ticketId}")

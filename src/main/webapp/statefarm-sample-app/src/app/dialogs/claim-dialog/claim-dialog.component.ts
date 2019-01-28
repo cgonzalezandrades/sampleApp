@@ -10,7 +10,7 @@ import { ClaimsService } from '../../claim/claims.service';
 export class ClaimDialogComponent implements AfterContentChecked {
     public claim: any;
     public newMessage: String;
-    public tatuses = ['New', 'Open', 'Pending', 'Resolved'];
+    public statuses = ['New', 'Open', 'Pending', 'Resolved'];
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,

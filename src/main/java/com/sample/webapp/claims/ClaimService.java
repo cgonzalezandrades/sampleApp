@@ -1,4 +1,4 @@
-package com.sample.webapp.tickets;
+package com.sample.webapp.claims;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TicketService {
+public class ClaimService {
 	
 	@Autowired
-	private TicketRepository ticketsRepository;
+	private ClaimRepository claimsRepository;
 	
 	
 //	private List<Ticket> tickets = new ArrayList<>(Arrays.asList(
@@ -20,28 +20,28 @@ public class TicketService {
 //			new Ticket(3, "subject3", "description3",  new String[]{"ID", "NAME"}, "OPEN" )
 //			));
 	
-	public List<Ticket> getAllTickets(){
+	public List<Claim> getAllClaims(){
 //		return tickets;
 		
-		List<Ticket> tickets = new ArrayList<>();
-		// iterate thoguth each ticket, and add each to the tickets List
-		ticketsRepository.findAll().forEach(tickets :: add);
-		return tickets;
+		List<Claim> claims = new ArrayList<>();
+		// iterate through each claim, and add each to the tickets List
+		claimsRepository.findAll().forEach(claims :: add);
+		return claims;
 	}
 	
-	public Optional<Ticket> getTicket(String ticketId) {
+	public Optional<Claim> getClaim(String claimId) {
 //		return tickets.stream().filter(t -> t.getId().equals(ticketId)).findFirst().get();
 		
-		return ticketsRepository.findById(ticketId);
+		return claimsRepository.findById(claimId);
 	}
 	
-	public void addTicket(Ticket ticket) {
+	public void addClaim(Claim claim) {
 //		tickets.add(ticket);
-		ticket.setId((int)ticketsRepository.count() + 1);
-		ticketsRepository.save(ticket);
+		claim.setId((int)claimsRepository.count() + 1);
+		claimsRepository.save(claim);
 	}
 
-	public void updateTicket(String ticketId, Ticket ticket) {
+	public void updateClaim(String claimId, Claim claim) {
 		
 //		for(int i = 0; i < tickets.size(); i ++) {
 //			Ticket currentTicket = tickets.get(i);
@@ -51,7 +51,7 @@ public class TicketService {
 //			}
 //		}
 		
-		ticketsRepository.save(ticket);
+		claimsRepository.save(claim);
 	}
 
 //	public void deleteTicket(String ticketId) {
