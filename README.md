@@ -25,6 +25,9 @@ This app created for the sole purpose of demostrating require knowledge for excu
 - `NodeJs`
 
 # Installation
+**for tesing this app you will need to create a account to be able to login**  
+Dont worry ! you are not subscribing or putting you personal information anywhere.  
+
 - **before permorforming these steps:**
 - make sure you have Java SDK 8
 - Port 8080 is not in use.
@@ -37,7 +40,9 @@ This app created for the sole purpose of demostrating require knowledge for excu
  ###### 5. Install `@Angular/CLI`
  ###### 6. Run `npm install`
  ###### 7. `ng serve`
- ###### 8. On your browser, go to `http://localhost:4200`
+ ###### 8. On your browser, go to `http://localhost:4200`  
+ 
+  **do not reboot the spring boot app after you get it running. data is stored in memory by JPA Java Persisten API and Hibernate**
 
  ### NOTES
  For simplicity and time reasons Im skipping some important topics like security and some basic functionality that would make this product more attractive and secure. 
