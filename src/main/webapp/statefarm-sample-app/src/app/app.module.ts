@@ -14,6 +14,7 @@ import { ClaimMasterComponent } from './claim/master/master.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ClaimDialogComponent } from './dialogs/claim-dialog/claim-dialog.component';
 import { SignupComponent } from './signup/signup.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -21,7 +22,8 @@ import { SignupComponent } from './signup/signup.component';
         ClaimMasterComponent,
         ToolbarComponent,
         ClaimDialogComponent,
-        SignupComponent
+        SignupComponent,
+        FooterComponent
     ],
     imports: [
         HttpClientModule,

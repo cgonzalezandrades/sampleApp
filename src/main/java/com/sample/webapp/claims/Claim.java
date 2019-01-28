@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 
-// tell JAP to create a table from this object and each property would be a column
+//Tell JAP to create a table from this object and each property would be a column
 @Entity
 public class Claim {
 

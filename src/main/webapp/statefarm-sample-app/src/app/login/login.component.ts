@@ -33,8 +33,6 @@ export class LoginComponent implements OnInit {
         body.lastName = null;
         this.authService.login(body).subscribe(
             (response: any) => {
-                console.log(response);
-                // this.authService.logged();
                 this.authService.loggedIn.next(true);
                 this.router.navigate(['/tickets']);
             },

@@ -16,16 +16,6 @@ public class UserService {
 	private UserRepository userRepository;
 	
 	
-//	public List<User> getAllUsers(){
-//		List<User> users = new ArrayList<>();
-//		userRepository.findAll().forEach(users :: add);
-//		return users;
-//	}
-	
-//	public Optional<User> getUser(String userId) {
-//		return userRepository.findById(userId);
-//	}
-	
 	public void addUser(User user) {
 		user.setId((int)userRepository.count() + 1);
 		userRepository.save(user);
@@ -47,12 +37,5 @@ public class UserService {
 		}
 	}
 
-//	public void updateTicket(String userId, User user) {
-//		userRepository.save(user);
-//	}
-
-//	public void deleteUser(String userId) {
-//		userRepository.deleteById(userId);
-//	}
 
 }

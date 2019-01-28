@@ -18,11 +18,6 @@ export class AuthService {
         this.router.navigate(['/login']);
     }
 
-    logged() {
-        this.loggedIn.next(true);
-        this.router.navigate(['/tickets']);
-    }
-
     login(body) {
         return this.http.post(`http://localhost:8080/users/login`, body);
     }

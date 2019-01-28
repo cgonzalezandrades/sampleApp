@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 //  Here Im adding only angular material modules
 import {
     MatButtonModule,
+    MatTooltipModule,
     MatCardModule,
     MatPaginatorModule,
     MatIconModule,
@@ -19,6 +20,7 @@ import {
 @NgModule({
     imports: [
         MatDialogModule,
+        MatTooltipModule,
         MatInputModule,
         MatPaginatorModule,
         MatCardModule,
@@ -32,6 +34,7 @@ import {
         MatListModule
     ],
     exports: [
+        MatTooltipModule,
         MatSelectModule,
         MatDialogModule,
         MatInputModule,

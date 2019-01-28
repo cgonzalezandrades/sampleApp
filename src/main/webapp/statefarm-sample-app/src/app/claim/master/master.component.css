@@ -1,7 +1,12 @@
-.tickets-header {
+.claims-header {
     display: flex;
     justify-content: flex-end;
     margin: 1%;
+}
+
+.title {
+    display: flex;
+    flex: 1;
 }
 
 .table {

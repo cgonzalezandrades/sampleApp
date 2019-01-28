@@ -66,7 +66,7 @@ export class ClaimMasterComponent implements OnInit {
         this.dialogEvent(dialogRef);
     }
 
-    private newTicket() {
+    private newClaim() {
         this.claim = {
             id: null,
             subject: '',

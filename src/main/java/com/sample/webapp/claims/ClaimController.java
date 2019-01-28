@@ -42,11 +42,4 @@ public class ClaimController {
 		claimService.updateClaim(claimId,claim);
 	}
 	
-//	@RequestMapping(method = RequestMethod.DELETE, value = "/tickets/{ticketId}")
-//	@CrossOrigin(origins = "http://localhost:4200")
-//	public void deleteTicket( @PathVariable String ticketId) {
-//		 ticketService.deleteTicket(ticketId);
-//	}
-	
-	
 }

@@ -1,0 +1,24 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px;
+}
+
+.footer-content {
+    display: flex !important;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.phone-btn {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.linkedin-logo {
+    margin-top: 14px;
+}

@@ -18,18 +18,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	// GET by default
-//	@RequestMapping("/users")
-//	@CrossOrigin(origins = "http://localhost:4200")
-//	public List<User> getAllUsers() {
-//		return userService.getAllUsers();
-//	}
-	
-//	@RequestMapping("/users/{userId}")
-//	@CrossOrigin(origins = "http://localhost:4200")
-//	public Optional<User> getUser( @PathVariable String userId) {
-//		return userService.getUser(userId);
-//	}
 	
 	@RequestMapping(method = RequestMethod.POST, value="/users")
 	@CrossOrigin(origins = "http://localhost:4200")
@@ -38,29 +26,10 @@ public class UserController {
 	}
 	
 	
-//	@RequestMapping(method = RequestMethod.POST, value="users/login")
-//	@CrossOrigin(origins = "http://localhost:4200")
-//	public String loginUser(@RequestBody User user) {
-//		return userService.loginUser(user);
-//	}
-	
 	@RequestMapping(method = RequestMethod.POST, value="users/login")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity loginUser(@RequestBody User user) {
 		return userService.loginUser(user);
 	}
-	
-//	@RequestMapping(method = RequestMethod.PUT, value="/users/{userId}")
-//	@CrossOrigin(origins = "http://localhost:4200")
-//	public void updateUser(@PathVariable String userId, @RequestBody User user) {
-//		userService.updateTicket(userId,user);
-//	}
-	
-//	@RequestMapping(method = RequestMethod.DELETE, value = "/users/{userId}")
-//	@CrossOrigin(origins = "http://localhost:4200")
-//	public void deleteUser( @PathVariable String userId) {
-//		userService.deleteUser(userId);
-//	}
-	
 	
 }
